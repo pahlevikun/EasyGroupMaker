@@ -1,8 +1,10 @@
-package id.pahlevikun.easygroupmaker
+package id.pahlevikun.easygroupmaker.view.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import id.pahlevikun.easygroupmaker.R
+import id.pahlevikun.easygroupmaker.composer.util.ArrayConversion
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.util.*
@@ -13,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         val sumOfPerson = 23
         val sumOfGroup = 5
