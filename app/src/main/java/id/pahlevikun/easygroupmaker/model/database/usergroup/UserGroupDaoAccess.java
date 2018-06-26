@@ -9,10 +9,10 @@ import java.util.List;
 @Dao
 public interface UserGroupDaoAccess {
     @Insert
-    void insertSingleProfile(UserGroupTable userGroupTable);
+    void insertSingleUserGroup(UserGroupTable userGroupTable);
 
     @Insert
-    void insertMultipleProfile(List<UserGroupTable> userGroupTableList);
+    void insertMultipleUserGroup(List<UserGroupTable> userGroupTableList);
 
     @Query("SELECT * FROM UserGroupTable")
     List<UserGroupTable> selectAllUserGroup();
@@ -21,8 +21,8 @@ public interface UserGroupDaoAccess {
     UserGroupTable selectLastUserGroup();
 
     @Query("DELETE FROM UserGroupTable")
-    void deleteAllProfile();
+    void deleteAllUserGroup();
 
     @Query("DELETE FROM UserGroupTable WHERE _id =:userId")
-    void deleteProfileById(String userId);
+    void deleteUserGroupById(String userId);
 }
