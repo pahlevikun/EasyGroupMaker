@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Easy Group Maker</string>
+    <string name="activity_main_menu_preferences">Preferences</string>
+    <string name="activity_main_menu_saved">Saved Group/Team</string>
+    <string name="activity_main_menu_quick">Quick Random</string>
+    <string name="activity_main_menu_new">New Group/Team</string>
 </resources>

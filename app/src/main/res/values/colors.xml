@@ -7,8 +7,10 @@
     <color name="colorBackground">#ffa251</color>
     <color name="colorBackgroundStroke">#e17e27</color>
     <color name="colorBackgroundOverlay">#d2fad7b8</color>
-    <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorMaterialBackground">#eeeeee</color>
+    <color name="colorShadow">#2f000000</color>
+    <color name="colorText">#424242</color>
     <color name="blue">#dd5048</color>
 
     <color name="selected_txt">#dd5048</color>
@@ -20,6 +22,7 @@
     <color name="Indicator_tabSelectedTextColor">#e92324</color>
     <color name="tabindiacator_background">#fff</color>
     <color name="tabIndicator_color">#38bffe</color>
+    <color name="colorGloomRed">#e98f8a</color>
 </resources>
 
 

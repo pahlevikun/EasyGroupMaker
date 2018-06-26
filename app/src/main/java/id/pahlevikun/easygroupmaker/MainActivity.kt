@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         for (singleItem in 0 until listOfPerson.size) {
             Log.d("HASIL", "PRINT $singleItem POSISI $groupIndex,$indexInsideGroup = ${listOfPerson[singleItem]}")
             declaredArrayBasedOnGroupAndPerson[groupIndex][indexInsideGroup] = listOfPerson[singleItem]
-            if (groupIndex < sumOfGroup-1) {
+            if (groupIndex < sumOfGroup - 1) {
                 groupIndex += 1
             } else {
                 groupIndex = 0
@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
         Log.d("HASIL", "GROUPED WITH NEW \n${Arrays.deepToString(declaredArrayBasedOnGroupAndPerson)}")
         val stringBuffer = StringBuffer()
         for (singleGroup in 0 until declaredArrayBasedOnGroupAndPerson.size) {
-            stringBuffer.append("Group ${singleGroup+1}\n")
+            stringBuffer.append("Group ${singleGroup + 1}\n")
             for (singlePersonInGroup in 0 until declaredArrayBasedOnGroupAndPerson[singleGroup].size) {
-                if (declaredArrayBasedOnGroupAndPerson[singleGroup][singlePersonInGroup]!=0) {
+                if (declaredArrayBasedOnGroupAndPerson[singleGroup][singlePersonInGroup] != 0) {
                     stringBuffer.append("${declaredArrayBasedOnGroupAndPerson[singleGroup][singlePersonInGroup]}\t")
                 }
             }
