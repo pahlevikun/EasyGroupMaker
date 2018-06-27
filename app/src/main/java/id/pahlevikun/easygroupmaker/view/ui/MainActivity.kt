@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import id.pahlevikun.easygroupmaker.R
-import id.pahlevikun.easygroupmaker.composer.util.ArrayConversion
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.util.*
