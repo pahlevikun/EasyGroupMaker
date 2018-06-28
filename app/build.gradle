@@ -24,6 +24,7 @@ android {
             minifyEnabled true
             zipAlignEnabled true
             crunchPngs true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
@@ -32,6 +33,7 @@ android {
             minifyEnabled true
             zipAlignEnabled true
             crunchPngs true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -55,8 +57,10 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:multidex:1.0.3'
     /*Android Architecture*/
     implementation "android.arch.persistence.room:runtime:1.1.1"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     /*Other Dependencies*/
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'

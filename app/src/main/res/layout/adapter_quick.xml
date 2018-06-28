@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/_15sdp"
+    android:paddingEnd="@dimen/_15sdp"
+    android:paddingStart="@dimen/_15sdp">
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/editTextQuickPerson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:hint="Insert Number of Person"
+        android:inputType="number"
+        android:textSize="@dimen/_16ssp" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/editTextQuickGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:hint="Insert Number of Group"
+        android:inputType="number"
+        android:textSize="@dimen/_16ssp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="Select Method"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp">
+
+        <RadioButton
+            android:id="@+id/radioFixed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Fixed Group"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/_12ssp" />
+
+        <RadioButton
+            android:id="@+id/radioSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size per-Group"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/_12ssp" />
+    </RadioGroup>
+
+</LinearLayout>

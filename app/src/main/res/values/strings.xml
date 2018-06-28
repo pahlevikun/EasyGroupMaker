@@ -4,4 +4,16 @@
     <string name="activity_main_menu_saved">Saved Group/Team</string>
     <string name="activity_main_menu_quick">Quick Random</string>
     <string name="activity_main_menu_new">New Group/Team</string>
+
+    <string name="snackbar_double_click">Click again for exit!</string>
+    <string name="snackbar_fill_correctly">Please fill correctly!</string>
+
+    <string name="alerDialogInformationTitleQuick">Quick Group</string>
+    <string name="alerDialogInformationSubTitleQuick">Please fill this form below</string>
+    <string name="alertDialogButtonPositiveQuick">Start Randomize!</string>
+    <string name="alertDialogButtonNegativeQuick">Cancel</string>
+
+    <string name="intentExtraSumOfGroup">intentExtraSumOfGroup</string>
+    <string name="intentExtraSumOfPerson">intentExtraSumOfPerson</string>
+    <string name="intentExtraIsSizeMethod">intentExtraIsSizeMethod</string>
 </resources>

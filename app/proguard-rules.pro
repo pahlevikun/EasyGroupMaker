@@ -19,3 +19,22 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 -renamesourcefileattribute SourceFile
+
+-dontwarn java.lang.annotation.Annotation
+
+-keepattributes RuntimeVisibleAnnotations
+-keepattributes AnnotationDefault
+-keepattributes *Annotation*
+
+-keep @interface android.support.annotation.Keep
+-keep @android.support.annotation.Keep class *
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep <fields>;
+}
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep <methods>;
+}
+-keep class com.crashlytics.** { public private *; }
+-keep class com.google.firebase.** { public private  *; }
+
+-printmapping mapping.txt

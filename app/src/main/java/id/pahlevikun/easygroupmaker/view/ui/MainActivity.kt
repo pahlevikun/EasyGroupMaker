@@ -1,59 +1,92 @@
 package id.pahlevikun.easygroupmaker.view.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import id.pahlevikun.easygroupmaker.R
-import java.math.BigDecimal
-import java.math.RoundingMode
-import java.util.*
+import id.pahlevikun.easygroupmaker.presenter.implementation.MainPresenter
+import id.voela.actrans.AcTrans
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+
+    private var doubleBackToExitPressedOnce = false
+    private val presenter = MainPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        arcProgressSaved.progress = presenter.getSumOfGroupSize(this)
+        arcProgressRandomed.progress = presenter.getSumOfRandomNumber(this)
 
-        val sumOfPerson = 23
-        val sumOfGroup = 5
-        val estimatedSumOfPersonInFroup = roundHalfTop(sumOfPerson.toDouble() / sumOfGroup)
-        val declaredArrayBasedOnGroupAndPerson = Array(sumOfGroup) { IntArray(estimatedSumOfPersonInFroup) }
-        var groupIndex = 0
-        var indexInsideGroup = 0
-        val listOfPerson = mutableListOf<Int>()
-        for (i in 1..sumOfPerson) {
-            listOfPerson += i
-        }
-        listOfPerson.shuffle()
+        linearlayoutMenuQuick.setOnClickListener {
+            val alert = android.support.v7.app.AlertDialog.Builder(this)
+            val inflater = this.layoutInflater
+            val dialogView = inflater.inflate(R.layout.adapter_quick, null)
 
-        for (singleItem in 0 until listOfPerson.size) {
-            Log.d("HASIL", "PRINT $singleItem POSISI $groupIndex,$indexInsideGroup = ${listOfPerson[singleItem]}")
-            declaredArrayBasedOnGroupAndPerson[groupIndex][indexInsideGroup] = listOfPerson[singleItem]
-            if (groupIndex < sumOfGroup - 1) {
-                groupIndex += 1
-            } else {
-                groupIndex = 0
-                indexInsideGroup += 1
-            }
-        }
-        Log.d("HASIL", "GROUPED WITH NEW \n${Arrays.deepToString(declaredArrayBasedOnGroupAndPerson)}")
-        val stringBuffer = StringBuffer()
-        for (singleGroup in 0 until declaredArrayBasedOnGroupAndPerson.size) {
-            stringBuffer.append("Group ${singleGroup + 1}\n")
-            for (singlePersonInGroup in 0 until declaredArrayBasedOnGroupAndPerson[singleGroup].size) {
-                if (declaredArrayBasedOnGroupAndPerson[singleGroup][singlePersonInGroup] != 0) {
-                    stringBuffer.append("${declaredArrayBasedOnGroupAndPerson[singleGroup][singlePersonInGroup]}\t")
+            val editTextGroup = dialogView.findViewById(R.id.editTextQuickGroup) as EditText
+            val editTextPerson = dialogView.findViewById(R.id.editTextQuickPerson) as EditText
+            val radioGroup = dialogView.findViewById(R.id.radioGroup) as RadioGroup
+            val radioSize = dialogView.findViewById(R.id.radioSize) as RadioButton
+
+            radioGroup.setOnCheckedChangeListener { _, checkedId ->
+                when (checkedId) {
+                    R.id.radioFixed -> {
+                        editTextGroup.hint = "Insert Number of Group"
+                        editTextGroup.text.clear()
+                    }
+                    R.id.radioSize -> {
+                        editTextGroup.hint = "Insert Person per Group"
+                        editTextGroup.text.clear()
+                    }
                 }
+
             }
-            stringBuffer.append("\n\n")
+
+            alert.setView(dialogView)
+            alert.setTitle(getString(R.string.alerDialogInformationTitleQuick))
+            alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuick))
+            alert.setCancelable(false)
+            alert.setPositiveButton(getString(R.string.alertDialogButtonPositiveQuick)) { _, _ ->
+                val sumOfGroup = editTextGroup.text.toString()
+                val sumOfPerson = editTextPerson.text.toString()
+                if (presenter.isQuickFieldEmpty(sumOfGroup, sumOfPerson)) {
+                    val isSizeMethod = radioSize.isChecked
+                    val intent = Intent(this@MainActivity, QuickActivity::class.java)
+                    intent.putExtra(getString(R.string.intentExtraSumOfGroup), sumOfGroup)
+                    intent.putExtra(getString(R.string.intentExtraSumOfPerson), sumOfPerson)
+                    intent.putExtra(getString(R.string.intentExtraIsSizeMethod), isSizeMethod)
+                    startActivity(intent)
+                    AcTrans.Builder(this).performSlideToLeft()
+                } else {
+                    Snackbar.make(coordinatorMain, getString(R.string.snackbar_fill_correctly), Snackbar.LENGTH_SHORT).show()
+                }
+
+            }
+            alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuick)) { _, _ ->
+            }
+            alert.show()
         }
-        Log.d("HASIL", "GROUPED IN STRING \n$stringBuffer")
+
     }
 
-    private fun roundHalfTop(d: Double): Int {
-        return BigDecimal(d).setScale(0, RoundingMode.HALF_UP).toInt()
+    override fun onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+        this.doubleBackToExitPressedOnce = true
+        Snackbar.make(coordinatorMain, getString(R.string.snackbar_double_click), Snackbar.LENGTH_SHORT).show()
+        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+
     }
 
 }
