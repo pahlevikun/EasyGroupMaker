@@ -31,7 +31,7 @@ class QuickPresenter : QuickInterface {
         } else {
             castedSumOfPerson = sumOfPerson.toInt()
             castedSumOfGroup = sumOfGroup.toInt()
-            estimatedSumOfPersonInFroup = roundHalfToUp(castedSumOfPerson.toDouble() / castedSumOfGroup)
+            estimatedSumOfPersonInFroup = roundHalfToUp(castedSumOfPerson.toDouble() / castedSumOfGroup) + 1
         }
 
         Log.d("HASIL", "GRUP $isSizeMethod, PERSON $castedSumOfPerson, GRUP $castedSumOfGroup, PERSON/GRUP $estimatedSumOfPersonInFroup")
