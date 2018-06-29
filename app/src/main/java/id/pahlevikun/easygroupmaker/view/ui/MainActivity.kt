@@ -52,11 +52,11 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                 .setOnMenuItemClickListener { position, _ ->
                     when (position) {
                         0 -> {
-                            startActivity(Intent(this@MainActivity, NewGroupActivity::class.java))
+                            startActivity(Intent(this@MainActivity, NewGroupAddActivity::class.java))
                             AcTrans.Builder(this).performSlideToLeft()
                         }
                         1 -> {
-                            startActivity(Intent(this@MainActivity, NewGroupAddActivity::class.java))
+                            startActivity(Intent(this@MainActivity, NewGroupActivity::class.java))
                             AcTrans.Builder(this).performSlideToLeft()
                         }
                     }
