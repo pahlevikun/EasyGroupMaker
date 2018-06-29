@@ -1,8 +1,10 @@
-@file:Suppress("INACCESSIBLE_TYPE")
+@file:Suppress("INACCESSIBLE_TYPE", "DEPRECATION")
 
 package id.pahlevikun.easygroupmaker.view.ui
 
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.Snackbar
@@ -12,14 +14,18 @@ import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import com.skydoves.powermenu.MenuAnimation
+import com.skydoves.powermenu.PowerMenu
+import com.skydoves.powermenu.PowerMenuItem
 import com.tooltip.Tooltip
 import id.pahlevikun.easygroupmaker.R
+import id.pahlevikun.easygroupmaker.composer.application.AppController.context
 import id.pahlevikun.easygroupmaker.presenter.implementation.MainPresenter
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LifecycleOwner {
 
     private var doubleBackToExitPressedOnce = false
     private val presenter = MainPresenter()
@@ -30,6 +36,32 @@ class MainActivity : AppCompatActivity() {
 
         arcProgressSaved.progress = presenter.getSumOfGroupSize(this)
         arcProgressRandomed.progress = presenter.getSumOfRandomNumber(this)
+
+        val powerMenu = PowerMenu.Builder(context)
+                .addItem(PowerMenuItem("Type Group Member", false))
+                .addItem(PowerMenuItem("Select Saved Group Member", false))
+                .setAnimation(MenuAnimation.SHOWUP_TOP_LEFT)
+                .setWidth(600)
+                .setBackgroundAlpha(0f)
+                .setMenuShadow(10f)
+                .setHeight(500)
+                .setTextColor(resources.getColor(R.color.colorText))
+                .setSelectedTextColor(Color.WHITE)
+                .setMenuColor(Color.WHITE)
+                .setSelectedMenuColor(resources.getColor(R.color.colorPrimary))
+                .setOnMenuItemClickListener { position, _ ->
+                    when (position) {
+                        0 -> {
+                            startActivity(Intent(this@MainActivity, NewGroupActivity::class.java))
+                            AcTrans.Builder(this).performSlideToLeft()
+                        }
+                        1 -> {
+                            startActivity(Intent(this@MainActivity, NewGroupAddActivity::class.java))
+                            AcTrans.Builder(this).performSlideToLeft()
+                        }
+                    }
+                }
+                .build()
 
         linearlayoutMenuQuick.setOnClickListener {
             val alert = android.support.v7.app.AlertDialog.Builder(this)
@@ -84,8 +116,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         linearlayoutMenuNew.setOnClickListener {
-            startActivity(Intent(this@MainActivity, NewGroupActivity::class.java))
-            AcTrans.Builder(this).performSlideToLeft()
+            powerMenu.showAsAnchorRightTop(linearlayoutMenuNew)
         }
 
         linearlayoutMenuPreferences.setOnClickListener {

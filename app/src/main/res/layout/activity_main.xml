@@ -7,12 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
     tools:context=".view.ui.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorMaterialBackground"
+        android:background="@color/colorBackgroundCard"
         android:orientation="vertical">
 
         <LinearLayout

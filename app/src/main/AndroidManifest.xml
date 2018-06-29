@@ -53,6 +53,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".view.ui.NewGroupAddActivity"></activity>
     </application>
 
 </manifest>

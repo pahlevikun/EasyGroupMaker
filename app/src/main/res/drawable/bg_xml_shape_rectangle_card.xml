@@ -3,9 +3,9 @@
     android:padding="@dimen/_10sdp"
     android:shape="rectangle">
     <solid android:color="@color/colorCard" />
-    <corners
+    <!--<corners
         android:bottomLeftRadius="@dimen/_13sdp"
         android:bottomRightRadius="@dimen/_13sdp"
         android:topLeftRadius="@dimen/_13sdp"
-        android:topRightRadius="@dimen/_13sdp" />
+        android:topRightRadius="@dimen/_13sdp" />-->
 </shape>
