@@ -5,8 +5,12 @@
     <string name="activity_main_menu_quick">Quick Random</string>
     <string name="activity_main_menu_new">New Group/Team</string>
 
-    <string name="view_main_edittext_fixed">Insert Number of Group</string>
-    <string name="view_main_edittext_max">Insert Max Person per Group</string>
+    <string name="view_main_adapter_edittext_fixed">Insert Number of Group</string>
+    <string name="view_main_adapter_edittext_max">Insert Max Person per Group</string>
+    <string name="view_main_adapter_edittext_person">Insert Number of Person</string>
+    <string name="view_main_adapter_radio_fixed">Fixed Group</string>
+    <string name="view_main_adapter_radio_size">Max Person per-Group</string>
+    <string name="view_main_adapter_radio_group">Select Method</string>
 
     <string name="snackbar_double_click">Click again for exit!</string>
     <string name="snackbar_fill_correctly">Please fill correctly!</string>

@@ -7,9 +7,9 @@ import android.view.MenuItem
 import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.presenter.implementation.QuickPresenter
 import id.voela.actrans.AcTrans
-import kotlinx.android.synthetic.main.activity_quick.*
+import kotlinx.android.synthetic.main.activity_quick_group.*
 
-class QuickActivity : AppCompatActivity() {
+class QuickGroupActivity : AppCompatActivity() {
 
     private val presenter = QuickPresenter()
     private var readableArray = ""
@@ -17,7 +17,7 @@ class QuickActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quick)
+        setContentView(R.layout.activity_quick_group)
 
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

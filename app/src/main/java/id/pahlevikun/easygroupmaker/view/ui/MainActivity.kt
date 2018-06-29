@@ -42,17 +42,15 @@ class MainActivity : AppCompatActivity() {
             val radioSize = dialogView.findViewById(R.id.radioSize) as RadioButton
             val radioFixed = dialogView.findViewById(R.id.radioFixed) as RadioButton
 
-            showTooltip(radioFixed, getString(R.string.tooltipFixedGroup))
-
             radioGroup.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
                     R.id.radioFixed -> {
-                        editTextGroup.hint = getString(R.string.view_main_edittext_fixed)
+                        editTextGroup.hint = getString(R.string.view_main_adapter_edittext_fixed)
                         editTextGroup.text.clear()
                         showTooltip(radioFixed, getString(R.string.tooltipFixedGroup))
                     }
                     R.id.radioSize -> {
-                        editTextGroup.hint = getString(R.string.view_main_edittext_max)
+                        editTextGroup.hint = getString(R.string.view_main_adapter_edittext_max)
                         editTextGroup.text.clear()
                         showTooltip(radioSize, getString(R.string.tooltipMaxGroup))
                     }
@@ -69,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 val sumOfPerson = editTextPerson.text.toString()
                 if (presenter.isQuickFieldEmpty(sumOfGroup, sumOfPerson)) {
                     val isSizeMethod = radioSize.isChecked
-                    val intent = Intent(this@MainActivity, QuickActivity::class.java)
+                    val intent = Intent(this@MainActivity, QuickGroupActivity::class.java)
                     intent.putExtra(getString(R.string.intentExtraSumOfGroup), sumOfGroup)
                     intent.putExtra(getString(R.string.intentExtraSumOfPerson), sumOfPerson)
                     intent.putExtra(getString(R.string.intentExtraIsSizeMethod), isSizeMethod)
@@ -83,6 +81,21 @@ class MainActivity : AppCompatActivity() {
             alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuick)) { _, _ ->
             }
             alert.show()
+        }
+
+        linearlayoutMenuNew.setOnClickListener {
+            startActivity(Intent(this@MainActivity, NewGroupActivity::class.java))
+            AcTrans.Builder(this).performSlideToLeft()
+        }
+
+        linearlayoutMenuPreferences.setOnClickListener {
+            startActivity(Intent(this@MainActivity, PreferenceActivity::class.java))
+            AcTrans.Builder(this).performSlideToLeft()
+        }
+
+        linearlayoutMenuSaved.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SavedGroupActivity::class.java))
+            AcTrans.Builder(this).performSlideToLeft()
         }
 
     }

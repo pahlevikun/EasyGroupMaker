@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
-        android:hint="Insert Number of Person"
+        android:hint="@string/view_main_adapter_edittext_person"
         android:inputType="number"
         android:textSize="@dimen/_16ssp" />
 
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
-        android:hint="Insert Number of Group"
+        android:hint="@string/view_main_adapter_edittext_fixed"
         android:inputType="number"
         android:textSize="@dimen/_16ssp" />
 
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_15sdp"
-        android:text="Select Method"
+        android:text="@string/view_main_adapter_radio_group"
         android:textColor="@color/colorText"
         android:textSize="@dimen/_15ssp"
         android:textStyle="bold" />
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Fixed Group"
+            android:text="@string/view_main_adapter_radio_fixed"
             android:textColor="@color/colorText"
             android:textSize="@dimen/_12ssp" />
 
@@ -53,7 +53,7 @@
             android:id="@+id/radioSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Max Person per-Group"
+            android:text="@string/view_main_adapter_radio_size"
             android:textColor="@color/colorText"
             android:textSize="@dimen/_12ssp" />
     </RadioGroup>
