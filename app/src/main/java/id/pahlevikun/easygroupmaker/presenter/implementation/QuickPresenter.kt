@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class QuickPresenter : QuickInterface {
+
     override fun roundHalfToUp(value: Double): Int {
         return BigDecimal(value).setScale(0, RoundingMode.HALF_UP).toInt()
     }
@@ -59,12 +60,12 @@ class QuickPresenter : QuickInterface {
     }
 
     override fun parseArrayToHumanReadable(value: Array<IntArray>): String {
-        val stringBuffer = StringBuffer()
+        val stringBuffer = StringBuffer("Result :\n\n")
         for (singleGroup in 0 until value.size) {
             stringBuffer.append("Group ${singleGroup + 1}\n")
             for (singlePersonInGroup in 0 until value[singleGroup].size) {
                 if (value[singleGroup][singlePersonInGroup] != 0) {
-                    stringBuffer.append("${value[singleGroup][singlePersonInGroup]}\t")
+                    stringBuffer.append("${value[singleGroup][singlePersonInGroup]}.\t")
                 }
             }
             stringBuffer.append("\n\n")
