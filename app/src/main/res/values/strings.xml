@@ -5,13 +5,20 @@
     <string name="activity_main_menu_quick">Quick Random</string>
     <string name="activity_main_menu_new">New Group/Team</string>
 
+    <string name="view_main_edittext_fixed">Insert Number of Group</string>
+    <string name="view_main_edittext_max">Insert Max Person per Group</string>
+
     <string name="snackbar_double_click">Click again for exit!</string>
     <string name="snackbar_fill_correctly">Please fill correctly!</string>
+
+    <string name="tooltipFixedGroup">Equals based on determined group</string>
+    <string name="tooltipMaxGroup">Max size but equals each group</string>
 
     <string name="alerDialogInformationTitleQuick">Quick Group</string>
     <string name="alerDialogInformationSubTitleQuick">Please fill this form below</string>
     <string name="alertDialogButtonPositiveQuick">Start Randomize!</string>
     <string name="alertDialogButtonNegativeQuick">Cancel</string>
+
 
     <string name="intentExtraSumOfGroup">intentExtraSumOfGroup</string>
     <string name="intentExtraSumOfPerson">intentExtraSumOfPerson</string>

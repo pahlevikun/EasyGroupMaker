@@ -1,3 +1,5 @@
+@file:Suppress("INACCESSIBLE_TYPE")
+
 package id.pahlevikun.easygroupmaker.view.ui
 
 import android.content.Intent
@@ -5,9 +7,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
+import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import com.tooltip.Tooltip
 import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.presenter.implementation.MainPresenter
 import id.voela.actrans.AcTrans
@@ -35,16 +40,21 @@ class MainActivity : AppCompatActivity() {
             val editTextPerson = dialogView.findViewById(R.id.editTextQuickPerson) as EditText
             val radioGroup = dialogView.findViewById(R.id.radioGroup) as RadioGroup
             val radioSize = dialogView.findViewById(R.id.radioSize) as RadioButton
+            val radioFixed = dialogView.findViewById(R.id.radioFixed) as RadioButton
+
+            showTooltip(radioFixed, getString(R.string.tooltipFixedGroup))
 
             radioGroup.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
                     R.id.radioFixed -> {
-                        editTextGroup.hint = "Insert Number of Group"
+                        editTextGroup.hint = getString(R.string.view_main_edittext_fixed)
                         editTextGroup.text.clear()
+                        showTooltip(radioFixed, getString(R.string.tooltipFixedGroup))
                     }
                     R.id.radioSize -> {
-                        editTextGroup.hint = "Insert Person per Group"
+                        editTextGroup.hint = getString(R.string.view_main_edittext_max)
                         editTextGroup.text.clear()
+                        showTooltip(radioSize, getString(R.string.tooltipMaxGroup))
                     }
                 }
 
@@ -75,6 +85,16 @@ class MainActivity : AppCompatActivity() {
             alert.show()
         }
 
+    }
+
+    private fun showTooltip(view: View, message: String) {
+        Tooltip.Builder(this, view)
+                .setText(message)
+                .setGravity(Gravity.END)
+                .setCancelable(true)
+                .setTextSize(resources.getDimension(R.dimen._4ssp))
+                .setDismissOnClick(true)
+                .show()
     }
 
     override fun onBackPressed() {

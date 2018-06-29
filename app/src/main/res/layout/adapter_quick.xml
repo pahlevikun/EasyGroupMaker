@@ -53,7 +53,7 @@
             android:id="@+id/radioSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Size per-Group"
+            android:text="Max Person per-Group"
             android:textColor="@color/colorText"
             android:textSize="@dimen/_12ssp" />
     </RadioGroup>
