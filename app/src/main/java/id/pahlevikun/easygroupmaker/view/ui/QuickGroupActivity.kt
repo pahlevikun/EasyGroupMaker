@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import com.veer.hiddenshot.HiddenShot
 import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.presenter.implementation.QuickPresenter
 import kotlinx.android.synthetic.main.activity_quick_group.*
@@ -136,6 +137,10 @@ class QuickGroupActivity : AppCompatActivity() {
                 alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuickSave)) { _, _ ->
                 }
                 alert.show()
+                return true
+            }
+            R.id.action_screenshot ->{
+                HiddenShot.getInstance().buildShotAndShare(this)
                 return true
             }
         }
