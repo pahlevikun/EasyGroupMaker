@@ -4,6 +4,8 @@ import android.content.Context
 
 interface QuickInterface {
 
+    fun isFieldEmpty(name: String, desc: String): Boolean
+
     fun countRandom(context: Context)
 
     fun roundHalfToUp(value: Double): Int

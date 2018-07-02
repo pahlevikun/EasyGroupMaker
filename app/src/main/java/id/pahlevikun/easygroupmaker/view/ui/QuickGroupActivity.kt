@@ -1,12 +1,14 @@
 package id.pahlevikun.easygroupmaker.view.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
 import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.presenter.implementation.QuickPresenter
-import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_quick_group.*
 
 class QuickGroupActivity : AppCompatActivity() {
@@ -34,6 +36,35 @@ class QuickGroupActivity : AppCompatActivity() {
             presenter.countRandom(this)
             randomize(sumOfGroup, sumOfPerson, isSizeFixed)
         }
+
+        buttonSave.setOnClickListener {
+            val alert = android.support.v7.app.AlertDialog.Builder(this)
+            val inflater = this.layoutInflater
+            val dialogView = inflater.inflate(R.layout.adapter_save, null)
+
+            val editTextName = dialogView.findViewById(R.id.editTextGroupName) as EditText
+            val editTextDesc = dialogView.findViewById(R.id.editTextGroupDesc) as EditText
+
+            alert.setView(dialogView)
+            alert.setTitle(getString(R.string.alerDialogInformationTitleQuickSave))
+            alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuickSave))
+            alert.setCancelable(false)
+            alert.setPositiveButton(getString(R.string.alertDialogButtonPositiveQuickSave)) { _, _ ->
+                val groupName = editTextName.text.toString()
+                val groupDesc = editTextDesc.text.toString()
+                if (presenter.isFieldEmpty(groupName, groupDesc)) {
+                    Snackbar.make(coordinatorLayout, getString(R.string.snackbar_fill_correctly), Snackbar.LENGTH_SHORT).show()
+                } else {
+                    presenter.saveToDatabase(this, groupName, groupDesc, randomArray!!)
+                    Snackbar.make(coordinatorLayout, getString(R.string.snackbar_success_save), Snackbar.LENGTH_SHORT).show()
+                    buttonSave.isEnabled = false
+                }
+
+            }
+            alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuickSave)) { _, _ ->
+            }
+            alert.show()
+        }
     }
 
     private fun randomize(sumOfGroup: String, sumOfPerson: String, isSizeFixed: Boolean) {
@@ -43,8 +74,23 @@ class QuickGroupActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        finish()
-        AcTrans.Builder(this).performSlideToRight()
+        backPress()
+    }
+
+    private fun backPress() {
+        val alert = android.support.v7.app.AlertDialog.Builder(this)
+        alert.setTitle(getString(R.string.alerDialogInformationTitleQuickSave))
+        alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuickSaveBack))
+        alert.setCancelable(false)
+        alert.setPositiveButton(getString(R.string.alertDialogButtonPositiveQuickSave)) { _, _ ->
+            val intent = Intent(this@QuickGroupActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+        alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuickSave)) { _, _ ->
+        }
+        alert.show()
     }
 
 
@@ -57,11 +103,39 @@ class QuickGroupActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                finish()
-                AcTrans.Builder(this).performSlideToRight()
+                backPress()
                 return true
             }
             R.id.action_share -> {
+                val alert = android.support.v7.app.AlertDialog.Builder(this)
+                val inflater = this.layoutInflater
+                val dialogView = inflater.inflate(R.layout.adapter_save, null)
+
+                val editTextName = dialogView.findViewById(R.id.editTextGroupName) as EditText
+                val editTextDesc = dialogView.findViewById(R.id.editTextGroupDesc) as EditText
+
+                alert.setView(dialogView)
+                alert.setTitle(getString(R.string.alerDialogInformationTitleQuickSave))
+                alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuickSave))
+                alert.setCancelable(false)
+                alert.setPositiveButton(getString(R.string.alertDialogButtonPositiveQuickSave)) { _, _ ->
+                    val groupName = editTextName.text.toString()
+                    val groupDesc = editTextDesc.text.toString()
+                    if (presenter.isFieldEmpty(groupName, groupDesc)) {
+                        Snackbar.make(coordinatorLayout, getString(R.string.snackbar_fill_correctly), Snackbar.LENGTH_SHORT).show()
+                    } else {
+                        val shareBody = "Group : $groupName\nFor : $groupDesc\n\n$readableArray"
+                        val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
+                        sharingIntent.type = "text/plain"
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, groupName)
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody)
+                        startActivity(Intent.createChooser(sharingIntent, getString(R.string.intentExtraBodyShareTo)))
+                    }
+
+                }
+                alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuickSave)) { _, _ ->
+                }
+                alert.show()
                 return true
             }
         }

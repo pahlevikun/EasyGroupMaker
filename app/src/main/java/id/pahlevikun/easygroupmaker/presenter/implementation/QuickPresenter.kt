@@ -14,6 +14,10 @@ import java.util.*
 
 class QuickPresenter : QuickInterface {
 
+    override fun isFieldEmpty(name: String, desc: String): Boolean {
+        return name.isEmpty() || desc.isEmpty()
+    }
+
     override fun countRandom(context: Context) {
         RandomManager(context).addRandomed()
     }

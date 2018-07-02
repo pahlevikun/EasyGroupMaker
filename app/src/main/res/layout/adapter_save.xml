@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/_15sdp"
+    android:paddingEnd="@dimen/_15sdp"
+    android:paddingStart="@dimen/_15sdp">
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/editTextGroupName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:hint="@string/view_main_adapter_group_name"
+        android:inputType="textCapWords"
+        android:textSize="@dimen/_16ssp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:text="@string/view_main_adapter_group_name_hint"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/_9ssp"
+        android:layout_marginStart="@dimen/_5sdp" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/editTextGroupDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="top"
+        android:hint="@string/view_main_adapter_group_desc"
+        android:inputType="textMultiLine"
+        android:lines="2"
+        android:maxLines="3"
+        android:textSize="@dimen/_16ssp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:text="@string/view_main_adapter_group_desc_hint"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/_9ssp"
+        android:layout_marginStart="@dimen/_5sdp" />
+
+</LinearLayout>

@@ -11,15 +11,26 @@
     <string name="view_main_adapter_radio_fixed">Fixed Group</string>
     <string name="view_main_adapter_radio_size">Max Person per-Group</string>
     <string name="view_main_adapter_radio_group">Select Method</string>
+    <string name="view_main_adapter_group_name_hint">E.g. : Futsal Team A, English Study Group</string>
+    <string name="view_main_adapter_group_name">Type group name</string>
+    <string name="view_main_adapter_group_desc">Type group description</string>
+    <string name="view_main_adapter_group_desc_hint">E.g. : Futsal Team A for competition in 2018 vs Team B</string>
 
     <string name="snackbar_double_click">Click again for exit!</string>
     <string name="snackbar_fill_correctly">Please fill correctly!</string>
+    <string name="snackbar_success_save">Success save!</string>
+    <string name="snackbar_share_or_end">Please save, share, or end this session!</string>
 
     <string name="tooltipFixedGroup">Equals based on determined group</string>
     <string name="tooltipMaxGroup">Max size but equals each group</string>
 
     <string name="alerDialogInformationTitleQuick">Quick Group</string>
     <string name="alerDialogInformationSubTitleQuick">Please fill this form below</string>
+    <string name="alerDialogInformationTitleQuickSave">Information</string>
+    <string name="alerDialogInformationSubTitleQuickSave">Are you sure save this group? Please fill this form below</string>
+    <string name="alerDialogInformationSubTitleQuickSaveBack">Are you sure close this group window? Please note that you already share, save, or screenshot this window!</string>
+    <string name="alertDialogButtonPositiveQuickSave">Yes</string>
+    <string name="alertDialogButtonNegativeQuickSave">No</string>
     <string name="alertDialogButtonPositiveQuick">Start Randomize!</string>
     <string name="alertDialogButtonNegativeQuick">Cancel</string>
 
@@ -27,6 +38,8 @@
     <string name="intentExtraSumOfGroup">intentExtraSumOfGroup</string>
     <string name="intentExtraSumOfPerson">intentExtraSumOfPerson</string>
     <string name="intentExtraIsSizeMethod">intentExtraIsSizeMethod</string>
-    <string name="randomedValue">randomedValue</string>
+
     <string name="sharedRandomed">sharedRandomed</string>
+    <string name="randomedValue">randomedValue</string>
+    <string name="intentExtraBodyShareTo">Share to</string>
 </resources>
