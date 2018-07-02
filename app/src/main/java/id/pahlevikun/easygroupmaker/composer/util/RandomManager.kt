@@ -6,7 +6,7 @@
 
 package id.pahlevikun.easygroupmaker.composer.util
 
-import android.app.Activity
+import android.content.Context
 import android.content.SharedPreferences
 import id.pahlevikun.easygroupmaker.R
 
@@ -14,7 +14,7 @@ import id.pahlevikun.easygroupmaker.R
  * Created by farhan on 1/8/18.
  */
 
-class RandomManager(private val context: Activity) {
+class RandomManager(private val context: Context) {
 
     private val pref: SharedPreferences
     private val editor: SharedPreferences.Editor
@@ -28,8 +28,8 @@ class RandomManager(private val context: Activity) {
         editor = pref.edit()
     }
 
-    fun addRandomed(randomedValue: Int) {
-        val storeValue = randomedValue + 1
+    fun addRandomed() {
+        val storeValue = pref.getInt(context.getString(R.string.randomedValue), 0) + 1
         editor.putInt(context.getString(R.string.randomedValue), storeValue)
         editor.commit()
     }

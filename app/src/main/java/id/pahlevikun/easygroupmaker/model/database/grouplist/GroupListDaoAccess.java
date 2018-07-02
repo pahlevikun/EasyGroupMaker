@@ -25,4 +25,8 @@ public interface GroupListDaoAccess {
 
     @Query("DELETE FROM GroupListTable WHERE _id =:userId")
     void deleteGroupListById(String userId);
+
+
+    @Query("SELECT COUNT(*) FROM GroupListTable")
+    int countData();
 }
