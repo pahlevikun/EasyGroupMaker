@@ -98,6 +98,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                 val sumOfGroup = editTextGroup.text.toString()
                 val sumOfPerson = editTextPerson.text.toString()
                 if (presenter.isQuickFieldEmpty(sumOfGroup, sumOfPerson)) {
+                    presenter.countRandom(this)
                     val isSizeMethod = radioSize.isChecked
                     val intent = Intent(this@MainActivity, QuickGroupActivity::class.java)
                     intent.putExtra(getString(R.string.intentExtraSumOfGroup), sumOfGroup)

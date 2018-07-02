@@ -3,6 +3,7 @@ package id.pahlevikun.easygroupmaker.presenter.implementation
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import id.pahlevikun.easygroupmaker.composer.util.RandomManager
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
 import id.pahlevikun.easygroupmaker.model.database.grouplist.GroupListTable
 import id.pahlevikun.easygroupmaker.presenter.`interface`.QuickInterface
@@ -12,6 +13,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class QuickPresenter : QuickInterface {
+
+    override fun countRandom(context: Context) {
+        RandomManager(context).addRandomed()
+    }
 
     override fun roundHalfToUp(value: Double): Int {
         return BigDecimal(value).setScale(0, RoundingMode.HALF_UP).toInt()

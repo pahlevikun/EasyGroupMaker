@@ -31,6 +31,7 @@ class QuickGroupActivity : AppCompatActivity() {
         randomize(sumOfGroup, sumOfPerson, isSizeFixed)
 
         buttonRandom.setOnClickListener {
+            presenter.countRandom(this)
             randomize(sumOfGroup, sumOfPerson, isSizeFixed)
         }
     }

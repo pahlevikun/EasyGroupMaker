@@ -8,5 +8,7 @@ interface MainInterface {
 
     fun getSumOfRandomNumber(context: Context): Int
 
+    fun countRandom(context: Context)
+
     fun isQuickFieldEmpty(sumOfGroup: String, sumOfPerson: String): Boolean
 }

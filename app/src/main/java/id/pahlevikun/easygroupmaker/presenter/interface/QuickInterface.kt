@@ -3,6 +3,9 @@ package id.pahlevikun.easygroupmaker.presenter.`interface`
 import android.content.Context
 
 interface QuickInterface {
+
+    fun countRandom(context: Context)
+
     fun roundHalfToUp(value: Double): Int
 
     fun beginRandomize(sumOfPerson: String, sumOfGroup: String, isSizeMethod: Boolean): Array<IntArray>

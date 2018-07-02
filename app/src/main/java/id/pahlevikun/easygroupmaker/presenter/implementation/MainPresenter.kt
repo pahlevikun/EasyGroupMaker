@@ -6,6 +6,11 @@ import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
 import id.pahlevikun.easygroupmaker.presenter.`interface`.MainInterface
 
 class MainPresenter : MainInterface {
+
+    override fun countRandom(context: Context) {
+        RandomManager(context).addRandomed()
+    }
+
     override fun getSumOfGroupSize(context: Context): Int {
         val dataCount = RoomInitializer.initDatabase(context).groupListDaoAccess().countData()
         return if (dataCount > 100) {
