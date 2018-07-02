@@ -27,4 +27,6 @@
     <string name="intentExtraSumOfGroup">intentExtraSumOfGroup</string>
     <string name="intentExtraSumOfPerson">intentExtraSumOfPerson</string>
     <string name="intentExtraIsSizeMethod">intentExtraIsSizeMethod</string>
+    <string name="randomedValue">randomedValue</string>
+    <string name="sharedRandomed">sharedRandomed</string>
 </resources>
