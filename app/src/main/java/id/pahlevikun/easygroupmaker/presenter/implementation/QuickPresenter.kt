@@ -5,9 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
+import android.support.v4.content.FileProvider
 import android.util.Log
 import android.view.View
+import id.pahlevikun.easygroupmaker.BuildConfig
+import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.composer.util.RandomManager
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
 import id.pahlevikun.easygroupmaker.model.database.grouplist.GroupListTable
@@ -29,34 +33,53 @@ class QuickPresenter : QuickInterface, ScreenShotInterface {
         return view.drawingCache
     }
 
-    override fun saveScreenshot(bitmap: Bitmap): Boolean {
-        val imagePath = File("${Environment.getExternalStorageDirectory()}/scrnshot.png")
-        val fos: FileOutputStream?
+    @SuppressLint("SimpleDateFormat")
+    override fun saveScreenshot(context: Context, bitmap: Bitmap): File {
+        val formatter = SimpleDateFormat("dd_MM_yyyy_HH_mm_ss")
+        val date = Date()
+        val createdAt = formatter.format(date)
+        val name = "egm_image_$createdAt.png"
+
+        val dirPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() +
+                "/" + context.getString(R.string.app_name) + "/"
+        val newDirectory = File(dirPath)
+        newDirectory.mkdirs()
+
         try {
-            fos = FileOutputStream(imagePath)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-            fos.flush()
-            fos.close()
-            return true
+            val output = FileOutputStream("$dirPath$name")
+            bitmap.compress(Bitmap.CompressFormat.PNG, 90, output)
+            output.close()
         } catch (e: FileNotFoundException) {
             Log.e("GREC", e.message, e)
-            return false
         } catch (e: IOException) {
             Log.e("GREC", e.message, e)
-            return false
         }
+        return File("$dirPath$name")
     }
 
     override fun shareScreenshot(context: Context, imagePath: File) {
-        val uri = Uri.fromFile(imagePath)
-        val sharingIntent = Intent(Intent.ACTION_SEND)
-        sharingIntent.type = "image/*"
-        val shareBody = "My highest score with screen shot"
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My Catch score")
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody)
-        sharingIntent.putExtra(Intent.EXTRA_STREAM, uri)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", imagePath)
 
-        context.startActivity(Intent.createChooser(sharingIntent, "Share via"))
+            val sharingIntent = Intent(Intent.ACTION_SEND)
+            sharingIntent.type = "image/*"
+            val shareBody = "RandomGroup Screenshot"
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Random Group")
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody)
+            sharingIntent.putExtra(Intent.EXTRA_STREAM, uri)
+            context.startActivity(Intent.createChooser(sharingIntent, "Share via"))
+        } else {
+            val uri = Uri.fromFile(imagePath)
+            val sharingIntent = Intent(Intent.ACTION_SEND)
+            sharingIntent.type = "image/*"
+            val shareBody = "RandomGroup Screenshot"
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Random Group")
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody)
+            sharingIntent.putExtra(Intent.EXTRA_STREAM, uri)
+            context.startActivity(Intent.createChooser(sharingIntent, "Share via"))
+        }
+
+
     }
 
     override fun isFieldEmpty(name: String, desc: String): Boolean {

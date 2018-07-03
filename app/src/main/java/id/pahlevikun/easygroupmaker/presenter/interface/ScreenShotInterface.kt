@@ -8,7 +8,7 @@ import java.io.File
 interface ScreenShotInterface {
     fun takeScreenshot(view: View): Bitmap
 
-    fun saveScreenshot(bitmap: Bitmap): Boolean
+    fun saveScreenshot(context: Context, bitmap: Bitmap): File
 
     fun shareScreenshot(context: Context, imagePath: File)
 }

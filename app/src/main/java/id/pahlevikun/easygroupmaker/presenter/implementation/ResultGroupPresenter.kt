@@ -29,7 +29,7 @@ class ResultGroupPresenter : ResultGroupInterface, ScreenShotInterface {
         return view.drawingCache
     }
 
-    override fun saveScreenshot(bitmap: Bitmap): Boolean {
+    override fun saveScreenshot(context: Context, bitmap: Bitmap): File {
         val imagePath = File("${Environment.getExternalStorageDirectory()}/scrnshot.png")
         val fos: FileOutputStream?
         try {
@@ -37,14 +37,12 @@ class ResultGroupPresenter : ResultGroupInterface, ScreenShotInterface {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
             fos.flush()
             fos.close()
-            return true
         } catch (e: FileNotFoundException) {
             Log.e("GREC", e.message, e)
-            return false
         } catch (e: IOException) {
             Log.e("GREC", e.message, e)
-            return false
         }
+        return imagePath
     }
 
     override fun shareScreenshot(context: Context, imagePath: File) {

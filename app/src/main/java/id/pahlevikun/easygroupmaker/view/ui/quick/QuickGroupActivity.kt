@@ -11,6 +11,7 @@ import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.presenter.implementation.QuickPresenter
 import id.pahlevikun.easygroupmaker.view.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_quick_group.*
+import permissions.dispatcher.NeedsPermission
 
 class QuickGroupActivity : AppCompatActivity() {
 
@@ -40,9 +41,9 @@ class QuickGroupActivity : AppCompatActivity() {
         }
 
         buttonSave.setOnClickListener {
-            if (isSaved){
+            if (isSaved) {
                 Snackbar.make(coordinatorLayout, getString(R.string.alerDialogInformationSubTitleQuickAlreadySaved), Snackbar.LENGTH_SHORT).show()
-            }else {
+            } else {
                 val alert = android.support.v7.app.AlertDialog.Builder(this)
                 val inflater = this.layoutInflater
                 val dialogView = inflater.inflate(R.layout.adapter_save, null)
@@ -146,10 +147,17 @@ class QuickGroupActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_screenshot -> {
-
+                takeScreenshot()
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    @NeedsPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    private fun takeScreenshot() {
+        val bitmap = presenter.takeScreenshot(window.decorView.rootView)
+        val file = presenter.saveScreenshot(this, bitmap)
+        presenter.shareScreenshot(this, file)
     }
 }
