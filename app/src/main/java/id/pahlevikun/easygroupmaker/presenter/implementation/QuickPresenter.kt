@@ -38,7 +38,7 @@ class QuickPresenter : QuickInterface, ScreenShotInterface {
         val formatter = SimpleDateFormat("dd_MM_yyyy_HH_mm_ss")
         val date = Date()
         val createdAt = formatter.format(date)
-        val name = "egm_image_$createdAt.png"
+        val name = "egm_image_quick_$createdAt.png"
 
         val dirPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() +
                 "/" + context.getString(R.string.app_name) + "/"
