@@ -20,6 +20,7 @@
     <string name="snackbar_fill_correctly">Please fill correctly!</string>
     <string name="snackbar_success_save">Success save!</string>
     <string name="snackbar_share_or_end">Please save, share, or end this session!</string>
+    <string name="snackbar_fill_group">Please fill group list with member</string>
 
     <string name="tooltipFixedGroup">Equals based on determined group</string>
     <string name="tooltipMaxGroup">Max size but equals each group</string>
@@ -27,6 +28,8 @@
     <string name="alerDialogInformationTitleQuick">Quick Group</string>
     <string name="alerDialogInformationSubTitleQuick">Please fill this form below</string>
     <string name="alerDialogInformationTitleQuickSave">Information</string>
+    <string name="alerDialogInformationSubTitleQuickSaved">Are you sure save this group list?</string>
+    <string name="alerDialogInformationSubTitleQuickAlreadySaved">This group list already saved!</string>
     <string name="alerDialogInformationSubTitleQuickSave">Are you sure save this group? Please fill this form below</string>
     <string name="alerDialogInformationSubTitleQuickSaveBack">Are you sure close this group window? Please note that you already share, save, or screenshot this window!</string>
     <string name="alertDialogButtonPositiveQuickSave">Yes</string>

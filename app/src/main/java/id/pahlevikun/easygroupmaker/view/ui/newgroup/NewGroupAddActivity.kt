@@ -23,6 +23,7 @@ class NewGroupAddActivity : AppCompatActivity() {
     private var arrayList = ArrayList<String>()
     private val presenter = NewGroupAddPresenter()
     private var adapter: NewGroupAddlAdapter? = null
+    private var isSaved = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +59,7 @@ class NewGroupAddActivity : AppCompatActivity() {
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         menu.clear()
-        menuInflater.inflate(R.menu.menu_addnew, menu)
+        menuInflater.inflate(R.menu.menu_addsave, menu)
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -126,6 +127,33 @@ class NewGroupAddActivity : AppCompatActivity() {
                     alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuick)) { _, _ ->
                     }
                     alert.show()
+                }
+                return true
+            }
+            R.id.action_savenew -> {
+                if (arrayList.isEmpty()) {
+                    Snackbar.make(coordinatorLayout, getString(R.string.snackbar_fill_group), Snackbar.LENGTH_SHORT).show()
+                } else {
+                    val alert = android.support.v7.app.AlertDialog.Builder(this)
+                    if (isSaved) {
+                        alert.setTitle(getString(R.string.alerDialogInformationTitleQuickSave))
+                        alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuickAlreadySaved))
+                        alert.setCancelable(false)
+                        alert.setPositiveButton(getString(R.string.alertDialogButtonPositiveQuickSave)) { _, _ ->
+                        }
+                        alert.show()
+                    } else {
+                        alert.setTitle(getString(R.string.alerDialogInformationTitleQuickSave))
+                        alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuickSaved))
+                        alert.setCancelable(false)
+                        alert.setPositiveButton(getString(R.string.alertDialogButtonPositiveQuickSave)) { _, _ ->
+                            presenter.saveGroupList(this, arrayList)
+                            isSaved = true
+                        }
+                        alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuickSave)) { _, _ ->
+                        }
+                        alert.show()
+                    }
                 }
                 return true
             }

@@ -6,6 +6,8 @@ import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAddlAdapter
 
 interface NewGroupAddInterface {
 
+    fun saveGroupList(context: Context, array: ArrayList<String>)
+
     fun parsingToArray(arrayList: ArrayList<String>): Array<String>
 
     fun isQuickFieldEmpty(sumOfGroup: String, sumOfPerson: String): Boolean

@@ -1,6 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_savenew"
+        android:icon="@drawable/ic_vect_menu_save"
+        android:title="Save"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_addnew"
         android:icon="@drawable/ic_vect_menu_check"
         android:title="Check"

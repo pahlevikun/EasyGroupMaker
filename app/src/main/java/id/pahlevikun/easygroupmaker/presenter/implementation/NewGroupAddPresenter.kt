@@ -3,10 +3,15 @@ package id.pahlevikun.easygroupmaker.presenter.implementation
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
 import id.pahlevikun.easygroupmaker.presenter.`interface`.NewGroupAddInterface
 import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAddlAdapter
 
 class NewGroupAddPresenter : NewGroupAddInterface {
+
+    override fun saveGroupList(context: Context, array: ArrayList<String>) {
+        val room = RoomInitializer.initDatabase(context).groupListDaoAccess()
+    }
 
     override fun parsingToArray(arrayList: ArrayList<String>): Array<String> {
         val stockArr = arrayOfNulls<String>(arrayList.size)
