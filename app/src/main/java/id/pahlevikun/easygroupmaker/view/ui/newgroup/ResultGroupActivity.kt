@@ -17,6 +17,7 @@ class ResultGroupActivity : AppCompatActivity() {
     private val presenter = ResultGroupPresenter()
     private var readableArray = ""
     private var randomArray: Array<Array<String>>? = null
+    private var isSaved = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,32 +40,37 @@ class ResultGroupActivity : AppCompatActivity() {
         }
 
         buttonSave.setOnClickListener {
-            val alert = android.support.v7.app.AlertDialog.Builder(this)
-            val inflater = this.layoutInflater
-            val dialogView = inflater.inflate(R.layout.adapter_save, null)
+            if (isSaved) {
+                Snackbar.make(coordinatorLayout, getString(R.string.alerDialogInformationSubTitleQuickAlreadySaved), Snackbar.LENGTH_SHORT).show()
+            } else {
+                val alert = android.support.v7.app.AlertDialog.Builder(this)
+                val inflater = this.layoutInflater
+                val dialogView = inflater.inflate(R.layout.adapter_save, null)
 
-            val editTextName = dialogView.findViewById(R.id.editTextGroupName) as EditText
-            val editTextDesc = dialogView.findViewById(R.id.editTextGroupDesc) as EditText
+                val editTextName = dialogView.findViewById(R.id.editTextGroupName) as EditText
+                val editTextDesc = dialogView.findViewById(R.id.editTextGroupDesc) as EditText
 
-            alert.setView(dialogView)
-            alert.setTitle(getString(R.string.alerDialogInformationTitleQuickSave))
-            alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuickSave))
-            alert.setCancelable(false)
-            alert.setPositiveButton(getString(R.string.alertDialogButtonPositiveQuickSave)) { _, _ ->
-                val groupName = editTextName.text.toString()
-                val groupDesc = editTextDesc.text.toString()
-                if (presenter.isFieldEmpty(groupName, groupDesc)) {
-                    Snackbar.make(coordinatorLayout, getString(R.string.snackbar_fill_correctly), Snackbar.LENGTH_SHORT).show()
-                } else {
-                    presenter.saveToDatabase(this, groupName, groupDesc, randomArray!!)
-                    Snackbar.make(coordinatorLayout, getString(R.string.snackbar_success_save), Snackbar.LENGTH_SHORT).show()
-                    buttonSave.isEnabled = false
+                alert.setView(dialogView)
+                alert.setTitle(getString(R.string.alerDialogInformationTitleQuickSave))
+                alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuickSave))
+                alert.setCancelable(false)
+                alert.setPositiveButton(getString(R.string.alertDialogButtonPositiveQuickSave)) { _, _ ->
+                    val groupName = editTextName.text.toString()
+                    val groupDesc = editTextDesc.text.toString()
+                    if (presenter.isFieldEmpty(groupName, groupDesc)) {
+                        Snackbar.make(coordinatorLayout, getString(R.string.snackbar_fill_correctly), Snackbar.LENGTH_SHORT).show()
+                    } else {
+                        presenter.saveToDatabase(this, groupName, groupDesc, randomArray!!)
+                        Snackbar.make(coordinatorLayout, getString(R.string.snackbar_success_save), Snackbar.LENGTH_SHORT).show()
+                        buttonSave.isEnabled = false
+                        isSaved = true
+                    }
+
                 }
-
+                alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuickSave)) { _, _ ->
+                }
+                alert.show()
             }
-            alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuickSave)) { _, _ ->
-            }
-            alert.show()
         }
     }
 

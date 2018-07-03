@@ -6,7 +6,9 @@ import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAddAdapter
 
 interface NewGroupAddInterface {
 
-    fun saveGroupList(context: Context, array: ArrayList<String>)
+    fun isFieldEmpty(v1: String, v2: String): Boolean
+
+    fun saveGroupList(context: Context, name: String, desc: String, array: ArrayList<String>)
 
     fun parsingToArray(arrayList: ArrayList<String>): Array<String>
 

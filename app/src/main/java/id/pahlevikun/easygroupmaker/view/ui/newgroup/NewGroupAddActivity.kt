@@ -143,12 +143,27 @@ class NewGroupAddActivity : AppCompatActivity() {
                         }
                         alert.show()
                     } else {
+                        val inflater = this.layoutInflater
+                        val dialogView = inflater.inflate(R.layout.adapter_save, null)
+
+                        val editTextName = dialogView.findViewById(R.id.editTextGroupName) as EditText
+                        val editTextDesc = dialogView.findViewById(R.id.editTextGroupDesc) as EditText
+
+                        alert.setView(dialogView)
                         alert.setTitle(getString(R.string.alerDialogInformationTitleQuickSave))
                         alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuickSaved))
                         alert.setCancelable(false)
                         alert.setPositiveButton(getString(R.string.alertDialogButtonPositiveQuickSave)) { _, _ ->
-                            presenter.saveGroupList(this, arrayList)
-                            isSaved = true
+                            val groupName = editTextName.text.toString()
+                            val groupDesc = editTextDesc.text.toString()
+                            if (presenter.isFieldEmpty(groupName, groupDesc)) {
+                                Snackbar.make(coordinatorLayout, getString(R.string.snackbar_fill_correctly), Snackbar.LENGTH_SHORT).show()
+                            } else {
+                                presenter.saveGroupList(this, groupName, groupDesc, arrayList)
+                                Snackbar.make(coordinatorLayout, getString(R.string.snackbar_success_save), Snackbar.LENGTH_SHORT).show()
+                                isSaved = true
+                            }
+
                         }
                         alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuickSave)) { _, _ ->
                         }

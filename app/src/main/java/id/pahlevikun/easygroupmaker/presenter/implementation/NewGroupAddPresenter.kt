@@ -1,16 +1,36 @@
 package id.pahlevikun.easygroupmaker.presenter.implementation
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
+import id.pahlevikun.easygroupmaker.model.database.usergroup.UserGroupTable
 import id.pahlevikun.easygroupmaker.presenter.`interface`.NewGroupAddInterface
 import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAddAdapter
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NewGroupAddPresenter : NewGroupAddInterface {
 
-    override fun saveGroupList(context: Context, array: ArrayList<String>) {
-        val room = RoomInitializer.initDatabase(context).groupListDaoAccess()
+    override fun isFieldEmpty(v1: String, v2: String): Boolean {
+        return v1.isEmpty() || v2.isEmpty()
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    override fun saveGroupList(context: Context, name: String, desc: String, array: ArrayList<String>) {
+        val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+        val date = Date()
+        val createdAt = formatter.format(date)
+
+        RoomInitializer
+                .initDatabase(context)
+                .userGroupDaoAccess()
+                .insertSingleUserGroup(UserGroupTable(
+                        name,
+                        desc,
+                        Arrays.deepToString(array.toArray()),
+                        createdAt, createdAt))
     }
 
     override fun parsingToArray(arrayList: ArrayList<String>): Array<String> {
