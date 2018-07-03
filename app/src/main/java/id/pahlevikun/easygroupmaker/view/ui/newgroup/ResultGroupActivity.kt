@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.MobileAds
 import id.pahlevikun.easygroupmaker.R
+import id.pahlevikun.easygroupmaker.composer.config.APIConfig
 import id.pahlevikun.easygroupmaker.presenter.implementation.ResultGroupPresenter
 import id.pahlevikun.easygroupmaker.view.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_quick_group.*
@@ -27,6 +30,10 @@ class ResultGroupActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
         title = getString(R.string.activity_main_menu_quick)
+
+        MobileAds.initialize(this, APIConfig.FIREBASE_AD_TOKEN)
+        adView.adSize = AdSize.BANNER
+        adView.adUnitId = APIConfig.FIREBASE_AD_TOKEN
 
         val sumOfGroup = intent.getStringExtra(getString(R.string.intentExtraSumOfGroup))
         val sumOfPerson = intent.getStringArrayExtra(getString(R.string.intentExtraSumOfPerson))

@@ -2,10 +2,10 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:id="@+id/coordinatorLayout"
     android:fitsSystemWindows="true"
     tools:context=".view.ui.quick.QuickGroupActivity">
 
@@ -88,6 +88,12 @@
                 android:textSize="@dimen/_12ssp" />
         </LinearLayout>
 
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-9613364299862356~4433904964" />
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
