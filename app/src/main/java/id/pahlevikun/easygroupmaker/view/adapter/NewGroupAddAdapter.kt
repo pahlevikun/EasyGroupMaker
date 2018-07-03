@@ -15,8 +15,8 @@ import java.util.*
  * Created by farhan on 6/30/17.
  */
 
-class NewGroupAddlAdapter(private val nameData: ArrayList<String>) :
-        RecyclerView.Adapter<NewGroupAddlAdapter.ViewHolder>() {
+class NewGroupAddAdapter(private val nameData: ArrayList<String>) :
+        RecyclerView.Adapter<NewGroupAddAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.adapter_new_group_add, viewGroup, false)
         return ViewHolder(view)
@@ -24,6 +24,9 @@ class NewGroupAddlAdapter(private val nameData: ArrayList<String>) :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         viewHolder.itemView.textViewName.text = nameData[i]
+        viewHolder.itemView.imageViewDelete.setOnClickListener {
+            removeAt(i)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -33,7 +36,14 @@ class NewGroupAddlAdapter(private val nameData: ArrayList<String>) :
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         init {
             itemView.textViewName
+            itemView.imageViewDelete
         }
+    }
+
+    fun removeAt(position: Int) {
+        nameData.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, nameData.size)
     }
 
 }

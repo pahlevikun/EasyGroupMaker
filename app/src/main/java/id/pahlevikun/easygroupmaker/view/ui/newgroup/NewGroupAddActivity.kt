@@ -14,7 +14,7 @@ import android.widget.RadioGroup
 import com.tooltip.Tooltip
 import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.presenter.implementation.NewGroupAddPresenter
-import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAddlAdapter
+import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAddAdapter
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_new_group_add.*
 
@@ -22,7 +22,7 @@ class NewGroupAddActivity : AppCompatActivity() {
 
     private var arrayList = ArrayList<String>()
     private val presenter = NewGroupAddPresenter()
-    private var adapter: NewGroupAddlAdapter? = null
+    private var adapter: NewGroupAddAdapter? = null
     private var isSaved = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
