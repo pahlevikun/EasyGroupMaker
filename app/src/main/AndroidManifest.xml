@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.pahlevikun.easygroupmaker">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".composer.application.AppController"
         android:allowBackup="true"
@@ -10,6 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
         <activity
             android:name=".view.ui.MainActivity"
             android:screenOrientation="portrait"
@@ -34,12 +48,12 @@
         </service>
 
         <activity
-            android:name=".view.ui.QuickGroupActivity"
+            android:name=".view.ui.quick.QuickGroupActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".view.ui.NewGroupActivity"
+            android:name=".view.ui.newgroup.NewGroupActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -53,7 +67,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".view.ui.NewGroupAddActivity"></activity>
+        <activity android:name=".view.ui.newgroup.NewGroupAddActivity"></activity>
+        <activity android:name=".view.ui.newgroup.ResultGroupActivity"/>
     </application>
 
 </manifest>

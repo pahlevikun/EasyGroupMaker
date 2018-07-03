@@ -7,7 +7,7 @@
     android:background="@color/colorPrimary"
     android:id="@+id/coordinatorLayout"
     android:fitsSystemWindows="true"
-    tools:context=".view.ui.QuickGroupActivity">
+    tools:context=".view.ui.quick.QuickGroupActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

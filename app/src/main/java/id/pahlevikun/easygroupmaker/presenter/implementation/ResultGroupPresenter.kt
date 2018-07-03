@@ -11,7 +11,7 @@ import android.view.View
 import id.pahlevikun.easygroupmaker.composer.util.RandomManager
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
 import id.pahlevikun.easygroupmaker.model.database.grouplist.GroupListTable
-import id.pahlevikun.easygroupmaker.presenter.`interface`.QuickInterface
+import id.pahlevikun.easygroupmaker.presenter.`interface`.ResultGroupInterface
 import id.pahlevikun.easygroupmaker.presenter.`interface`.ScreenShotInterface
 import java.io.File
 import java.io.FileNotFoundException
@@ -22,7 +22,7 @@ import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.*
 
-class QuickPresenter : QuickInterface, ScreenShotInterface {
+class ResultGroupPresenter : ResultGroupInterface, ScreenShotInterface {
 
     override fun takeScreenshot(view: View): Bitmap {
         view.isDrawingCacheEnabled = true
@@ -71,7 +71,7 @@ class QuickPresenter : QuickInterface, ScreenShotInterface {
         return BigDecimal(value).setScale(0, RoundingMode.HALF_UP).toInt()
     }
 
-    override fun beginRandomize(sumOfPerson: String, sumOfGroup: String, isSizeMethod: Boolean): Array<IntArray> {
+    override fun beginRandomize(sumOfPerson: Array<String>, sumOfGroup: String, isSizeMethod: Boolean): Array<Array<String>> {
         var groupIndex = 0
         var indexInsideGroup = 0
         val castedSumOfPerson: Int
@@ -79,23 +79,20 @@ class QuickPresenter : QuickInterface, ScreenShotInterface {
         val estimatedSumOfPersonInFroup: Int
 
         if (isSizeMethod) {
-            castedSumOfPerson = sumOfPerson.toInt()
+            castedSumOfPerson = sumOfPerson.size
             val tempCastedSumOfGroup = sumOfGroup.toInt()
             castedSumOfGroup = (castedSumOfPerson / tempCastedSumOfGroup) + 1
             estimatedSumOfPersonInFroup = tempCastedSumOfGroup
         } else {
-            castedSumOfPerson = sumOfPerson.toInt()
+            castedSumOfPerson = sumOfPerson.size
             castedSumOfGroup = sumOfGroup.toInt()
             estimatedSumOfPersonInFroup = roundHalfToUp(castedSumOfPerson.toDouble() / castedSumOfGroup) + 1
         }
 
         Log.d("HASIL", "GRUP $isSizeMethod, PERSON $castedSumOfPerson, GRUP $castedSumOfGroup, PERSON/GRUP $estimatedSumOfPersonInFroup")
-        val declaredArrayBasedOnGroupAndPerson = Array(castedSumOfGroup) { IntArray(estimatedSumOfPersonInFroup) }
+        val declaredArrayBasedOnGroupAndPerson = Array(castedSumOfGroup) { Array(estimatedSumOfPersonInFroup) { "" } }
 
-        val listOfPerson = mutableListOf<Int>()
-        for (i in 1..castedSumOfPerson) {
-            listOfPerson += i
-        }
+        val listOfPerson = sumOfPerson.toMutableList()
         listOfPerson.shuffle()
 
         for (singleItem in 0 until listOfPerson.size) {
@@ -113,12 +110,12 @@ class QuickPresenter : QuickInterface, ScreenShotInterface {
         return declaredArrayBasedOnGroupAndPerson
     }
 
-    override fun parseArrayToHumanReadable(value: Array<IntArray>): String {
+    override fun parseArrayToHumanReadable(value: Array<Array<String>>): String {
         val stringBuffer = StringBuffer("Result :\n\n")
         for (singleGroup in 0 until value.size) {
             stringBuffer.append("Group ${singleGroup + 1}\n")
             for (singlePersonInGroup in 0 until value[singleGroup].size) {
-                if (value[singleGroup][singlePersonInGroup] != 0) {
+                if (value[singleGroup][singlePersonInGroup] != "") {
                     stringBuffer.append("${value[singleGroup][singlePersonInGroup]}. ")
                 }
             }
@@ -128,7 +125,7 @@ class QuickPresenter : QuickInterface, ScreenShotInterface {
     }
 
     @SuppressLint("SimpleDateFormat")
-    override fun saveToDatabase(context: Context, name: String, description: String, savedValue: Array<IntArray>) {
+    override fun saveToDatabase(context: Context, name: String, description: String, savedValue: Array<Array<String>>) {
         val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
         val date = Date()
         val createdAt = formatter.format(date)

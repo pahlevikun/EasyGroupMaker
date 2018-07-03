@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.pahlevikun.easygroupmaker.R
-import id.pahlevikun.easygroupmaker.model.pojo.NewGroup
 import kotlinx.android.synthetic.main.adapter_new_group_add.view.*
 import java.util.*
 
@@ -16,7 +15,7 @@ import java.util.*
  * Created by farhan on 6/30/17.
  */
 
-class NewGroupAddlAdapter(private val nameData: ArrayList<NewGroup>) :
+class NewGroupAddlAdapter(private val nameData: ArrayList<String>) :
         RecyclerView.Adapter<NewGroupAddlAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.adapter_new_group_add, viewGroup, false)
@@ -24,7 +23,7 @@ class NewGroupAddlAdapter(private val nameData: ArrayList<NewGroup>) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.itemView.textViewName.text = nameData[i].name
+        viewHolder.itemView.textViewName.text = nameData[i]
     }
 
     override fun getItemCount(): Int {

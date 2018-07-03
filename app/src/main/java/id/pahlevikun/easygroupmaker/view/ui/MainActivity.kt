@@ -21,6 +21,9 @@ import com.tooltip.Tooltip
 import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.composer.application.AppController.context
 import id.pahlevikun.easygroupmaker.presenter.implementation.MainPresenter
+import id.pahlevikun.easygroupmaker.view.ui.newgroup.NewGroupActivity
+import id.pahlevikun.easygroupmaker.view.ui.newgroup.NewGroupAddActivity
+import id.pahlevikun.easygroupmaker.view.ui.quick.QuickGroupActivity
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -1,4 +1,4 @@
-package id.pahlevikun.easygroupmaker.view.ui
+package id.pahlevikun.easygroupmaker.view.ui.newgroup
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,6 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.tooltip.Tooltip
 import id.pahlevikun.easygroupmaker.R
-import id.pahlevikun.easygroupmaker.model.pojo.NewGroup
 import id.pahlevikun.easygroupmaker.presenter.implementation.NewGroupAddPresenter
 import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAddlAdapter
 import id.voela.actrans.AcTrans
@@ -21,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_new_group_add.*
 
 class NewGroupAddActivity : AppCompatActivity() {
 
-    private var arrayList = ArrayList<NewGroup>()
+    private var arrayList = ArrayList<String>()
     private val presenter = NewGroupAddPresenter()
     private var adapter: NewGroupAddlAdapter? = null
 
@@ -102,6 +101,8 @@ class NewGroupAddActivity : AppCompatActivity() {
 
                     }
 
+
+
                     alert.setView(dialogView)
                     alert.setTitle(getString(R.string.alerDialogInformationTitleQuick))
                     alert.setMessage(getString(R.string.alerDialogInformationSubTitleQuick))
@@ -111,9 +112,9 @@ class NewGroupAddActivity : AppCompatActivity() {
                         val sumOfPerson = arrayList.size.toString()
                         if (presenter.isQuickFieldEmpty(sumOfGroup, sumOfPerson)) {
                             val isSizeMethod = radioSize.isChecked
-                            val intent = Intent(this@NewGroupAddActivity, QuickGroupActivity::class.java)
+                            val intent = Intent(this@NewGroupAddActivity, ResultGroupActivity::class.java)
                             intent.putExtra(getString(R.string.intentExtraSumOfGroup), sumOfGroup)
-                            intent.putExtra(getString(R.string.intentExtraSumOfPerson), sumOfPerson)
+                            intent.putExtra(getString(R.string.intentExtraSumOfPerson), presenter.parsingToArray(arrayList))
                             intent.putExtra(getString(R.string.intentExtraIsSizeMethod), isSizeMethod)
                             startActivity(intent)
                             AcTrans.Builder(this).performSlideToLeft()

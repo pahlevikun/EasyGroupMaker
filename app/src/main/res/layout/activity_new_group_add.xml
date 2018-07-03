@@ -7,7 +7,7 @@
     android:background="@color/colorPrimary"
     android:id="@+id/coordinatorLayout"
     android:fitsSystemWindows="true"
-    tools:context=".view.ui.NewGroupAddActivity">
+    tools:context=".view.ui.newgroup.NewGroupAddActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package id.pahlevikun.easygroupmaker.view.ui
+package id.pahlevikun.easygroupmaker.view.ui.quick
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
-import com.veer.hiddenshot.HiddenShot
 import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.presenter.implementation.QuickPresenter
+import id.pahlevikun.easygroupmaker.view.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_quick_group.*
 
 class QuickGroupActivity : AppCompatActivity() {
@@ -139,8 +139,8 @@ class QuickGroupActivity : AppCompatActivity() {
                 alert.show()
                 return true
             }
-            R.id.action_screenshot ->{
-                HiddenShot.getInstance().buildShotAndShare(this)
+            R.id.action_screenshot -> {
+
                 return true
             }
         }
