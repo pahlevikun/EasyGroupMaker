@@ -1,9 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".view.ui.PreferenceActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorCard"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        </android.support.design.widget.AppBarLayout>
+
+        <id.pahlevikun.easygroupmaker.composer.view.TextViewRobotoRegular
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Data"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12ssp" />
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="@color/colorBackgroundCard2">
+
+            <id.pahlevikun.easygroupmaker.composer.view.TextViewRobotoRegular
+                android:id="@+id/textViewMenu1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_17sdp"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingTop="@dimen/_17sdp"
+                android:text="Clear User List of Group"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/_14ssp" />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="@color/colorBackgroundCard2">
+
+            <id.pahlevikun.easygroupmaker.composer.view.TextViewRobotoRegular
+                android:id="@+id/textViewMenu2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_17sdp"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingTop="@dimen/_17sdp"
+                android:text="Clear User Randomed Group"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/_14ssp" />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="@color/colorBackgroundCard2">
+
+            <id.pahlevikun.easygroupmaker.composer.view.TextViewRobotoRegular
+                android:id="@+id/textViewMenu3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_17sdp"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingTop="@dimen/_17sdp"
+                android:text="Clear All Data"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/_14ssp" />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@color/colorBackgroundCard" />
+
+
+        <id.pahlevikun.easygroupmaker.composer.view.TextViewRobotoRegular
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="Setting"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12ssp" />
+
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="@color/colorBackgroundCard2">
+
+            <id.pahlevikun.easygroupmaker.composer.view.TextViewRobotoRegular
+                android:id="@+id/textViewMenu4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_17sdp"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingTop="@dimen/_17sdp"
+                android:text="Change Language"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/_14ssp" />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@color/colorBackgroundCard" />
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

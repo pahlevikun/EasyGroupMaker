@@ -11,6 +11,7 @@
     <color name="colorText">#424242</color>
 
     <color name="colorBackgroundCard">#EEEEEE</color>
+    <color name="colorBackgroundCard2">#bdbdbd</color>
     <color name="colorCard">#FAFAFA</color>
 
 </resources>

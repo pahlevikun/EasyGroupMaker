@@ -73,6 +73,7 @@ dependencies {
         exclude module: "support-v13"
     }
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:3.2.0'
+    implementation 'com.balysv:material-ripple:1.0.2'
     /*Intuit Dependencies*/
     implementation 'com.intuit.sdp:sdp-android:1.0.5'
     implementation 'com.intuit.ssp:ssp-android:1.0.5'

@@ -25,6 +25,12 @@
     <string name="tooltipFixedGroup">Equals based on determined group</string>
     <string name="tooltipMaxGroup">Max size but equals each group</string>
 
+    <string name="alertDialogPreferencesTitleMenu1">Warning</string>
+    <string name="alertDialogPreferencesSubTitleMenu1">Are you sure delete all User List of Group data?</string>
+    <string name="alertDialogPreferencesTitleMenu2">Warning</string>
+    <string name="alertDialogPreferencesSubTitleMenu2">Are you sure delete all Randomed Group data?</string>
+    <string name="alertDialogPreferencesTitleMenu3">Warning</string>
+    <string name="alertDialogPreferencesSubTitleMenu3">Are you sure delete all data?</string>
     <string name="alerDialogInformationTitleQuick">Quick Group</string>
     <string name="alerDialogInformationSubTitleQuick">Please fill this form below</string>
     <string name="alerDialogInformationTitleQuickSave">Information</string>
@@ -36,6 +42,16 @@
     <string name="alertDialogButtonNegativeQuickSave">No</string>
     <string name="alertDialogButtonPositiveQuick">Start Randomize!</string>
     <string name="alertDialogButtonNegativeQuick">Cancel</string>
+
+    <string name="alertDialogLanguageTitle">Change Language</string>
+    <string name="alertDialogLanguageSubTitle">Select language</string>
+    <string name="alertDialogLanguageButtonPositive">Change</string>
+    <string name="alertDialogLanguageButtonNegative">Cancel</string>
+    <string name="languageSetting">Change Language</string>
+    <string-array name="languageSelect">
+        <item>English</item>
+        <item>Bahasa</item>
+    </string-array>
 
 
     <string name="intentExtraSumOfGroup">intentExtraSumOfGroup</string>
