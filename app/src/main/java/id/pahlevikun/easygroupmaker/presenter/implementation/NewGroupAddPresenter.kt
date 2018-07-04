@@ -31,6 +31,7 @@ class NewGroupAddPresenter : NewGroupAddInterface {
                         desc,
                         Arrays.deepToString(array.toArray()),
                         createdAt, createdAt))
+        RoomInitializer.destroyGroupList()
     }
 
     override fun parsingToArray(arrayList: ArrayList<String>): Array<String> {

@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
     private var doubleBackToExitPressedOnce = false
     private val presenter = MainPresenter()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                 .addItem(PowerMenuItem("Select Saved Group Member", false))
                 .setAnimation(MenuAnimation.SHOWUP_TOP_LEFT)
                 .setWidth(600)
+                .setLifecycleOwner(this)
                 .setBackgroundAlpha(0f)
                 .setMenuShadow(10f)
                 .setHeight(500)

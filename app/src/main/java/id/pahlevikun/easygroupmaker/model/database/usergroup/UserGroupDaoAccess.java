@@ -14,7 +14,7 @@ public interface UserGroupDaoAccess {
     @Insert
     void insertMultipleUserGroup(List<UserGroupTable> userGroupTableList);
 
-    @Query("SELECT * FROM UserGroupTable")
+    @Query("SELECT * FROM UserGroupTable ORDER BY _id ASC")
     List<UserGroupTable> selectAllUserGroup();
 
     @Query("SELECT * FROM UserGroupTable ORDER BY _id DESC LIMIT 1")

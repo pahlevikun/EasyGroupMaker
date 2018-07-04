@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_3sdp"
+        android:layout_marginRight="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:background="@drawable/bg_xml_shape_rectangle_card"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/_8sdp"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:paddingTop="@dimen/_8sdp">
+
+        <id.pahlevikun.easygroupmaker.composer.view.TextViewRobotoRegular
+            android:id="@+id/textViewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/_12ssp" />
+
+        <id.pahlevikun.easygroupmaker.composer.view.TextViewRobotoRegular
+            android:id="@+id/textViewSubName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+
+</LinearLayout>
