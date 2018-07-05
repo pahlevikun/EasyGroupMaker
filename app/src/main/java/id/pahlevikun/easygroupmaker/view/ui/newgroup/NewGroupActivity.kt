@@ -119,7 +119,7 @@ class NewGroupActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_addgroup -> {
-                startActivity(Intent(this@NewGroupActivity, NewGroupActivity::class.java))
+                startActivity(Intent(this@NewGroupActivity, NewGroupAddActivity::class.java))
                 AcTrans.Builder(this).performSlideToLeft()
                 return true
             }

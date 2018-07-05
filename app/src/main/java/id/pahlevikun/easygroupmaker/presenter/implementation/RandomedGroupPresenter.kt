@@ -7,17 +7,10 @@ import android.util.Log
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
 import id.pahlevikun.easygroupmaker.model.database.usergroup.UserGroupTable
 import id.pahlevikun.easygroupmaker.presenter.`interface`.ItemTouchCallback
-import id.pahlevikun.easygroupmaker.presenter.`interface`.NewGroupInterface
+import id.pahlevikun.easygroupmaker.presenter.`interface`.RandomedGroupInterface
 import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAdapter
 
-
-class NewGroupPresenter : NewGroupInterface {
-
-
-    override fun isFieldEmpty(v1: String, v2: String): Boolean {
-        return !v1.isEmpty() || !v2.isEmpty()
-    }
-
+class RandomedGroupPresenter : RandomedGroupInterface {
     override fun gettingData(context: Context): List<UserGroupTable> {
         val data = RoomInitializer.initDatabase(context).userGroupDaoAccess().selectAllUserGroup()
         RoomInitializer.destroyGroupList()
