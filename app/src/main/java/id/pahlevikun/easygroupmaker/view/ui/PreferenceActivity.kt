@@ -1,5 +1,6 @@
 package id.pahlevikun.easygroupmaker.view.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
@@ -38,6 +39,10 @@ class PreferenceActivity : AppCompatActivity() {
         textViewMenu4.setOnClickListener {
             showChangeLanguageDialog()
         }
+
+        textViewMenu5.setOnClickListener {
+            showDialog(getString(R.string.alertDialogPreferencesTitleMenu4), getString(R.string.alertDialogPreferencesSubTitleMenu4), 4)
+        }
     }
 
     private fun showDialog(title: String, subTitle: String, menu: Int) {
@@ -56,7 +61,14 @@ class PreferenceActivity : AppCompatActivity() {
                 3 -> {
                     presenter.deleteAllData(this)
                 }
+                4 -> {
+                    presenter.factoryReset(this)
+                }
             }
+            val intent = Intent(this@PreferenceActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
         }
         alert.setNegativeButton(getString(R.string.alertDialogButtonNegativeQuickSave)) { _, _ ->
         }

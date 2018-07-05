@@ -3,6 +3,7 @@ package id.pahlevikun.easygroupmaker.presenter.implementation
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import id.pahlevikun.easygroupmaker.composer.util.RandomManager
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
 import id.pahlevikun.easygroupmaker.presenter.`interface`.PreferencesInterface
 import id.pahlevikun.easygroupmaker.view.ui.MainActivity
@@ -25,14 +26,21 @@ class PreferencesPresenter : PreferencesInterface {
         RoomInitializer.destroyGroupList()
     }
 
-    override fun changeLanguage(context: Activity, langval:String) {
+    override fun factoryReset(context: Context) {
+        RoomInitializer.initDatabase(context).userGroupDaoAccess().deleteAllUserGroup()
+        RoomInitializer.initDatabase(context).groupListDaoAccess().deleteAllGroupList()
+        RoomInitializer.destroyGroupList()
+        RandomManager(context).clearRandomed()
+    }
+
+    override fun changeLanguage(context: Activity, langval: String) {
         val config = context.resources.configuration
         val locale = Locale(langval)
         Locale.setDefault(locale)
         config.locale = locale
-        context.resources.updateConfiguration(config,context.resources.displayMetrics)
+        context.resources.updateConfiguration(config, context.resources.displayMetrics)
 
-        val intent = Intent(context,MainActivity::class.java)
+        val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         context.startActivity(intent)
         context.finish()

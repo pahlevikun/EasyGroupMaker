@@ -94,6 +94,25 @@
                 android:textSize="@dimen/_14ssp" />
         </com.balysv.materialripple.MaterialRippleLayout>
 
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="@color/colorBackgroundCard2">
+
+            <id.pahlevikun.easygroupmaker.composer.view.TextViewRobotoRegular
+                android:id="@+id/textViewMenu5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_17sdp"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingTop="@dimen/_17sdp"
+                android:text="Factory Reset"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/_14ssp" />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_2sdp"

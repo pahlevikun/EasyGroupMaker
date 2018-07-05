@@ -5,9 +5,6 @@
     <string name="activity_main_menu_quick">Quick Random</string>
     <string name="activity_main_menu_new">New Group/Team</string>
 
-    <string name="activity_saved_fragment_list_group_user">User\'s Group</string>
-    <string name="activity_saved_fragment_list_randomed_group">Randomed Group</string>
-
     <string name="view_main_adapter_edittext_fixed">Insert Number of Group</string>
     <string name="view_main_adapter_edittext_max">Insert Max Person per Group</string>
     <string name="view_main_adapter_edittext_person">Insert Number of Person</string>
@@ -64,6 +61,4 @@
     <string name="sharedRandomed">sharedRandomed</string>
     <string name="randomedValue">randomedValue</string>
     <string name="intentExtraBodyShareTo">Share to</string>
-    <string name="alertDialogPreferencesSubTitleMenu4">Are you sure want to reset all data?</string>
-    <string name="alertDialogPreferencesTitleMenu4">Warning</string>
 </resources>

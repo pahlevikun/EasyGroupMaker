@@ -11,4 +11,6 @@ interface PreferencesInterface {
     fun deleteAllData(context: Context)
 
     fun changeLanguage(context: Activity, languageValue: String)
+
+    fun factoryReset(context: Context)
 }

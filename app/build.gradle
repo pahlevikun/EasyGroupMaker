@@ -64,7 +64,6 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     /*Other Dependencies*/
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
-    implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
     implementation 'agency.tango.android:material-intro-screen:0.0.5'
     implementation 'com.github.pahlevikun:actrans:0.0.2'
     implementation 'com.github.vihtarb:tooltip:0.1.6'
