@@ -1,4 +1,4 @@
-package id.pahlevikun.easygroupmaker.presenter.implementation
+package id.pahlevikun.easygroupmaker.presenter.implementation.newgroup
 
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
 import id.pahlevikun.easygroupmaker.model.database.usergroup.UserGroupTable
-import id.pahlevikun.easygroupmaker.presenter.`interface`.ItemTouchCallback
-import id.pahlevikun.easygroupmaker.presenter.`interface`.NewGroupInterface
+import id.pahlevikun.easygroupmaker.presenter.interfaces.callback.ItemTouchCallback
+import id.pahlevikun.easygroupmaker.presenter.interfaces.newgroup.NewGroupInterface
 import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAdapter
 
 
@@ -21,6 +21,7 @@ class NewGroupPresenter : NewGroupInterface {
     override fun gettingData(context: Context): List<UserGroupTable> {
         val data = RoomInitializer.initDatabase(context).userGroupDaoAccess().selectAllUserGroup()
         RoomInitializer.destroyGroupList()
+        Log.d("HASIL", "DATA FROM DB : ${data[0].team}")
         return data
     }
 

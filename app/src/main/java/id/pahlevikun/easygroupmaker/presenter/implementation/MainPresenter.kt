@@ -3,7 +3,7 @@ package id.pahlevikun.easygroupmaker.presenter.implementation
 import android.content.Context
 import id.pahlevikun.easygroupmaker.composer.util.RandomManager
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
-import id.pahlevikun.easygroupmaker.presenter.`interface`.MainInterface
+import id.pahlevikun.easygroupmaker.presenter.interfaces.MainInterface
 
 class MainPresenter : MainInterface {
 
@@ -12,7 +12,7 @@ class MainPresenter : MainInterface {
     }
 
     override fun getSumOfGroupSize(context: Context): Int {
-        val dataCount = RoomInitializer.initDatabase(context).groupListDaoAccess().countData()
+        val dataCount = RoomInitializer.initDatabase(context).randomGroupListDaoAccess().countData()
         return if (dataCount > 100) {
             dataCount / 100
         } else {

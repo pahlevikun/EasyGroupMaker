@@ -1,4 +1,4 @@
-package id.pahlevikun.easygroupmaker.presenter.`interface`
+package id.pahlevikun.easygroupmaker.presenter.interfaces.newgroup
 
 import android.content.Context
 

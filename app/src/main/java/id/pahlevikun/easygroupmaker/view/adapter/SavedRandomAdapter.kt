@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.pahlevikun.easygroupmaker.R
-import id.pahlevikun.easygroupmaker.model.database.usergroup.UserGroupTable
+import id.pahlevikun.easygroupmaker.model.database.grouplist.RandomGroupListTable
 import id.pahlevikun.easygroupmaker.presenter.interfaces.callback.ItemTouchCallback
 import id.pahlevikun.easygroupmaker.presenter.implementation.newgroup.NewGroupPresenter
 import kotlinx.android.synthetic.main.adapter_new_group.view.*
@@ -18,9 +18,9 @@ import kotlinx.android.synthetic.main.adapter_new_group.view.*
  * Created by farhan on 6/30/17.
  */
 
-class NewGroupAdapter(private val nameData: List<UserGroupTable>,
-                      private val onItemClick: ItemTouchCallback) :
-        RecyclerView.Adapter<NewGroupAdapter.ViewHolder>() {
+class SavedRandomAdapter(private val nameData: List<RandomGroupListTable>,
+                         private val onItemClick: ItemTouchCallback) :
+        RecyclerView.Adapter<SavedRandomAdapter.ViewHolder>() {
 
     private val presenter = NewGroupPresenter()
 

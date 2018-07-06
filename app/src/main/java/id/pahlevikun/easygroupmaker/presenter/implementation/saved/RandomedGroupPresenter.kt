@@ -1,18 +1,18 @@
-package id.pahlevikun.easygroupmaker.presenter.implementation
+package id.pahlevikun.easygroupmaker.presenter.implementation.saved
 
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
-import id.pahlevikun.easygroupmaker.model.database.usergroup.UserGroupTable
-import id.pahlevikun.easygroupmaker.presenter.`interface`.ItemTouchCallback
-import id.pahlevikun.easygroupmaker.presenter.`interface`.RandomedGroupInterface
-import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAdapter
+import id.pahlevikun.easygroupmaker.model.database.grouplist.RandomGroupListTable
+import id.pahlevikun.easygroupmaker.presenter.interfaces.callback.ItemTouchCallback
+import id.pahlevikun.easygroupmaker.presenter.interfaces.saved.RandomedGroupInterface
+import id.pahlevikun.easygroupmaker.view.adapter.SavedRandomAdapter
 
 class RandomedGroupPresenter : RandomedGroupInterface {
-    override fun gettingData(context: Context): List<UserGroupTable> {
-        val data = RoomInitializer.initDatabase(context).userGroupDaoAccess().selectAllUserGroup()
+    override fun gettingData(context: Context): List<RandomGroupListTable> {
+        val data = RoomInitializer.initDatabase(context).randomGroupListDaoAccess().selectAllGroupList()
         RoomInitializer.destroyGroupList()
         return data
     }
@@ -24,8 +24,8 @@ class RandomedGroupPresenter : RandomedGroupInterface {
         return resplit
     }
 
-    override fun setupAdapter(context: Context, recyclerView: RecyclerView, arrayList: List<UserGroupTable>, callback: ItemTouchCallback): NewGroupAdapter {
-        val adapter = NewGroupAdapter(arrayList, object : ItemTouchCallback {
+    override fun setupAdapter(context: Context, recyclerView: RecyclerView, arrayListRandom: List<RandomGroupListTable>, callback: ItemTouchCallback): SavedRandomAdapter {
+        val adapter = SavedRandomAdapter(arrayListRandom, object : ItemTouchCallback {
             override fun onItemTouch(data: Array<String>) {
                 callback.onItemTouch(data)
             }

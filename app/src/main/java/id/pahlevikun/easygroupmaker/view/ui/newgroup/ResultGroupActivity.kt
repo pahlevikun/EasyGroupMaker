@@ -8,7 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import id.pahlevikun.easygroupmaker.R
-import id.pahlevikun.easygroupmaker.presenter.implementation.ResultGroupPresenter
+import id.pahlevikun.easygroupmaker.presenter.implementation.newgroup.ResultGroupPresenter
 import id.pahlevikun.easygroupmaker.view.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_quick_group.*
 

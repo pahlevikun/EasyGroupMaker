@@ -1,4 +1,4 @@
-package id.pahlevikun.easygroupmaker.presenter.`interface`
+package id.pahlevikun.easygroupmaker.presenter.interfaces.newgroup
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

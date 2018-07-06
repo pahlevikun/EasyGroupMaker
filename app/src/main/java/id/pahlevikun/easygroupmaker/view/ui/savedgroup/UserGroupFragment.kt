@@ -12,11 +12,19 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import id.pahlevikun.easygroupmaker.R
+import id.pahlevikun.easygroupmaker.model.database.usergroup.UserGroupTable
+import id.pahlevikun.easygroupmaker.presenter.implementation.saved.UserGroupPresenter
+import id.pahlevikun.easygroupmaker.presenter.interfaces.callback.ItemTouchCallback
+import id.pahlevikun.easygroupmaker.view.adapter.SavedUserAdapter
+import kotlinx.android.synthetic.main.fragment_saved_user_group.*
 
 
 class UserGroupFragment : Fragment() {
+
+    private val presenter = UserGroupPresenter()
+    private var data: List<UserGroupTable>? = null
+    private var adapter: SavedUserAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +37,17 @@ class UserGroupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        data = presenter.gettingData(activity!!)
+        if (data!!.isEmpty()) {
+            viewNoData.visibility = View.VISIBLE
+        } else {
+            viewNoData.visibility = View.GONE
+        }
+        adapter = presenter.setupAdapter(activity!!, recyclerView, data!!, object : ItemTouchCallback {
+            override fun onItemTouch(data: Array<String>) {
 
+            }
+        })
     }
 
     override fun onDestroy() {

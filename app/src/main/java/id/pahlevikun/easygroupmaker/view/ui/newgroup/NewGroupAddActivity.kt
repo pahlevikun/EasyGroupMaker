@@ -13,7 +13,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.tooltip.Tooltip
 import id.pahlevikun.easygroupmaker.R
-import id.pahlevikun.easygroupmaker.presenter.implementation.NewGroupAddPresenter
+import id.pahlevikun.easygroupmaker.presenter.implementation.newgroup.NewGroupAddPresenter
 import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAddAdapter
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_new_group_add.*

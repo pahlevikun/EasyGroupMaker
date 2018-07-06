@@ -14,8 +14,8 @@ import android.widget.RadioGroup
 import com.tooltip.Tooltip
 import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.model.database.usergroup.UserGroupTable
-import id.pahlevikun.easygroupmaker.presenter.`interface`.ItemTouchCallback
-import id.pahlevikun.easygroupmaker.presenter.implementation.NewGroupPresenter
+import id.pahlevikun.easygroupmaker.presenter.interfaces.callback.ItemTouchCallback
+import id.pahlevikun.easygroupmaker.presenter.implementation.newgroup.NewGroupPresenter
 import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAdapter
 import id.voela.actrans.AcTrans
 import kotlinx.android.synthetic.main.activity_new_group.*

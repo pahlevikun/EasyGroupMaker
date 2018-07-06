@@ -5,7 +5,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 @Entity
-public class GroupListTable {
+public class RandomGroupListTable {
     @PrimaryKey(autoGenerate = true)
     private int _id;
     @NonNull
@@ -16,7 +16,7 @@ public class GroupListTable {
     private String createdAt;
     private String updatedAt;
 
-    public GroupListTable(@NonNull String name, String description, @NonNull String team, String createdAt, String updatedAt) {
+    public RandomGroupListTable(@NonNull String name, String description, @NonNull String team, String createdAt, String updatedAt) {
         this.name = name;
         this.description = description;
         this.team = team;

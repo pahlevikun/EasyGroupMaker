@@ -1,4 +1,4 @@
-package id.pahlevikun.easygroupmaker.presenter.implementation
+package id.pahlevikun.easygroupmaker.presenter.implementation.newgroup
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
 import id.pahlevikun.easygroupmaker.model.database.usergroup.UserGroupTable
-import id.pahlevikun.easygroupmaker.presenter.`interface`.NewGroupAddInterface
+import id.pahlevikun.easygroupmaker.presenter.interfaces.newgroup.NewGroupAddInterface
 import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAddAdapter
 import java.text.SimpleDateFormat
 import java.util.*

@@ -12,20 +12,19 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import id.pahlevikun.easygroupmaker.R
-import id.pahlevikun.easygroupmaker.model.database.usergroup.UserGroupTable
-import id.pahlevikun.easygroupmaker.presenter.`interface`.ItemTouchCallback
-import id.pahlevikun.easygroupmaker.presenter.implementation.RandomedGroupPresenter
-import id.pahlevikun.easygroupmaker.view.adapter.NewGroupAdapter
+import id.pahlevikun.easygroupmaker.model.database.grouplist.RandomGroupListTable
+import id.pahlevikun.easygroupmaker.presenter.implementation.saved.RandomedGroupPresenter
+import id.pahlevikun.easygroupmaker.presenter.interfaces.callback.ItemTouchCallback
+import id.pahlevikun.easygroupmaker.view.adapter.SavedRandomAdapter
 import kotlinx.android.synthetic.main.fragment_saved_user_group.*
 
 
 class RandomedGroupFragment : Fragment() {
 
     private val presenter = RandomedGroupPresenter()
-    private var data: List<UserGroupTable>? = null
-    private var adapter: NewGroupAdapter? = null
+    private var data: List<RandomGroupListTable>? = null
+    private var adapter: SavedRandomAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

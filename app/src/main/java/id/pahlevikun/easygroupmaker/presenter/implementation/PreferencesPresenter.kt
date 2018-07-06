@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import id.pahlevikun.easygroupmaker.composer.util.RandomManager
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
-import id.pahlevikun.easygroupmaker.presenter.`interface`.PreferencesInterface
+import id.pahlevikun.easygroupmaker.presenter.interfaces.PreferencesInterface
 import id.pahlevikun.easygroupmaker.view.ui.MainActivity
 import java.util.*
 
@@ -16,19 +16,19 @@ class PreferencesPresenter : PreferencesInterface {
     }
 
     override fun deleteRandomedGroup(context: Context) {
-        RoomInitializer.initDatabase(context).groupListDaoAccess().deleteAllGroupList()
+        RoomInitializer.initDatabase(context).randomGroupListDaoAccess().deleteAllGroupList()
         RoomInitializer.destroyGroupList()
     }
 
     override fun deleteAllData(context: Context) {
         RoomInitializer.initDatabase(context).userGroupDaoAccess().deleteAllUserGroup()
-        RoomInitializer.initDatabase(context).groupListDaoAccess().deleteAllGroupList()
+        RoomInitializer.initDatabase(context).randomGroupListDaoAccess().deleteAllGroupList()
         RoomInitializer.destroyGroupList()
     }
 
     override fun factoryReset(context: Context) {
         RoomInitializer.initDatabase(context).userGroupDaoAccess().deleteAllUserGroup()
-        RoomInitializer.initDatabase(context).groupListDaoAccess().deleteAllGroupList()
+        RoomInitializer.initDatabase(context).randomGroupListDaoAccess().deleteAllGroupList()
         RoomInitializer.destroyGroupList()
         RandomManager(context).clearRandomed()
     }

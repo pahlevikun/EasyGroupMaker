@@ -14,9 +14,9 @@ import id.pahlevikun.easygroupmaker.BuildConfig
 import id.pahlevikun.easygroupmaker.R
 import id.pahlevikun.easygroupmaker.composer.util.RandomManager
 import id.pahlevikun.easygroupmaker.model.database.RoomInitializer
-import id.pahlevikun.easygroupmaker.model.database.grouplist.GroupListTable
-import id.pahlevikun.easygroupmaker.presenter.`interface`.QuickInterface
-import id.pahlevikun.easygroupmaker.presenter.`interface`.ScreenShotInterface
+import id.pahlevikun.easygroupmaker.model.database.grouplist.RandomGroupListTable
+import id.pahlevikun.easygroupmaker.presenter.interfaces.QuickInterface
+import id.pahlevikun.easygroupmaker.presenter.interfaces.ScreenShotInterface
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -155,8 +155,8 @@ class QuickPresenter : QuickInterface, ScreenShotInterface {
         val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
         val date = Date()
         val createdAt = formatter.format(date)
-        val room = RoomInitializer.initDatabase(context).groupListDaoAccess()
-        val data = GroupListTable(name, description, Arrays.deepToString(savedValue), createdAt, createdAt)
+        val room = RoomInitializer.initDatabase(context).randomGroupListDaoAccess()
+        val data = RandomGroupListTable(name, description, Arrays.deepToString(savedValue), createdAt, createdAt)
         room.insertSingleUserGroup(data)
     }
 }
