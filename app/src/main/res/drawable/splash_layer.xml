@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@color/colorPrimary" />
+    <!--<item
+        android:left="@dimen/_10sdp"
+        android:right="@dimen/_10sdp">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/logo_img_voela_low"
+            android:tint="@color/colorWhite"/>
+        <item
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_splash_2"/>
+    </item>-->
+</layer-list>
